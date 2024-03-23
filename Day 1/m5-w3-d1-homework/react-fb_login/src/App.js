@@ -9,19 +9,45 @@ function App() {
   const [data, setData] = useState({});   // set up fb data 
   const [picture, setPicture] = useState('');   // set up fb profile image 
 
+  const responseFacebook = (response) => {
+    console.log(response);
+    setData(response);
+    setPicture(response.picture.data.url);
+    if (response.accessToken) {
+      setLogin(true)
+    } else {
+      setLogin(false);
+    }
+  }
+
   return (
     <div className="container">
       <Card>
         <Card.Header>
           <h1>My React App</h1>
         </Card.Header>
-        <Card.Body>
-          <Card.Text>
+        <Card.Text>
+          {!login &&
+          <React.Fragment>
             <h3>Please login using one of the following:</h3>
             {/* Login Form  */}
+            <LoginForm />
             {/* FB Login Button */}
-          </Card.Text>
-        </Card.Body>
+            <FacebookLogin 
+              appId='1392781434938182'
+              autoLoad={false}
+              fields='name,email,picture'
+              scope='public_profile,user_friends'
+              callback={responseFacebook}
+              icon='fa-facebook'
+            />
+          </React.Fragment>
+          }
+
+          {login &&
+            <Home fbpic={picture} fbdata={data} />
+          }
+        </Card.Text>
       </Card>
     </div>
   )
@@ -38,3 +64,15 @@ function LoginForm() {
     </form>
   )
 }
+
+function Home ({fbpic,fbdata}) {
+  return (
+    <React.Fragment>
+      <img src={fbpic} alt={fbdata.name} />
+      <h3 className='d-inline text-success mx-2'>Welcome back {fbdata.name}!</h3>
+      <p className='my-5'>This is the home page of the app.</p>
+    </React.Fragment>
+  )
+}
+
+export default App;
