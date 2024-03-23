@@ -1,5 +1,6 @@
 import React from "react";
 import Lists from "./Lists";
+import CreateList from "./CreateList";
 
 class App extends React.Component {
     constructor(props) {
@@ -39,6 +40,7 @@ class App extends React.Component {
             <button type="button" className="btn btn-primary" onClick={this.getLists}>
               Get Lists
             </button>
+            <CreateList singledata={this.state.singledata} />
           </span>
           {listTable}
         </div>
