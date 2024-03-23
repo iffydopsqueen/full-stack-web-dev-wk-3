@@ -5,7 +5,7 @@ import {
   authorizationUrl,
   clientId,
   redirectUri,
-} from './settings-implicit';
+} from './setting-implicit';
 
 export default function ImplicitGrantExample() {
   const [accessToken, setAccessToken] = useState(null);
