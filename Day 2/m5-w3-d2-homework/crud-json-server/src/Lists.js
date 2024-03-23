@@ -1,5 +1,6 @@
 import React from 'react';
 import UpdateList from './UpdateList';
+import DeleteList from './DeleteList';
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function Lists(props) {
@@ -27,6 +28,14 @@ function Lists(props) {
                                 item={item} // Pass the data of the specific item being updated
                                 updateList={updateList}
                                 handleChange={handleChange}
+                            />
+                        </td>
+                        <td>
+                            <DeleteList
+                                elementId={item.id}
+                                singledata={props.singledata}
+                                getList={props.getList}
+                                deleteList={props.deleteList}
                             />
                         </td>
                     </tr>

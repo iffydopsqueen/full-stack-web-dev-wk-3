@@ -119,7 +119,23 @@ class App extends React.Component {
       .catch(error => {
           console.error("Error updating item:", error);
       });
-  }         
+    }
+    
+    deleteList = (event, id) => {
+      fetch("http://localhost:5000/posts/" + id, {
+        method: "DELETE"
+      })
+        .then(res => res.json())
+        .then(result => {
+          this.setState({
+            singledata: {
+              title: "",
+              author: ""
+            }
+          });
+          this.getLists();
+        });
+    }
 
     render() {
       const listTable = this.state.loading ? (
@@ -129,9 +145,10 @@ class App extends React.Component {
           alldata={this.state.alldata}
           singledata={this.state.singledata}
           getList={this.getList}
-          updateList={this.updateList}
-          handleChange={this.handleChange} 
+          updateList={this.updateList} 
           reloadLists={this.getLists} // Pass the reloadLists function as a prop
+          deleteList={this.deleteList}
+          handleChange={this.handleChange}
         />
       );
 
