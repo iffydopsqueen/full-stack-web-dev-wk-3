@@ -5,8 +5,8 @@ function Lists(props) {
     let listrows = [];
     props.alldata.forEach(element => {
         listrows.push(
-            <tr key={element.id}>
-                <td>{element.id}</td>
+            <tr key={parseInt(element.id)}>
+                <td>{parseInt(element.id)}</td>
                 <td>{element.title}</td>
                 <td>{element.author}</td>
             </tr>

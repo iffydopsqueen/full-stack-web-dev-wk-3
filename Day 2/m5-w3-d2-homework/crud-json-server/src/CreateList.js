@@ -38,7 +38,13 @@ function CreateList(props) {
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={handleClose}>
+                    <Button 
+                        variant="primary" 
+                        onClick={() => {
+                            handleClose();
+                            props.createList();
+                        }}
+                    >
                         Create
                     </Button>
                 </Modal.Footer>

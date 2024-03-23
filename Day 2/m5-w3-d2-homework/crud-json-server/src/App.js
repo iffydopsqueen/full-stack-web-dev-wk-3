@@ -27,6 +27,51 @@ class App extends React.Component {
       .catch(console.log);
     }
 
+    handleChange = (event) => {
+      let title = this.state.singledata.title;
+      let author = this.state.singledata.author;
+
+      if (event.target.name === "title") title = event.target.value;
+      else author = event.target.value;
+
+      this.setState({
+        singledata: {
+          title: title,
+          author: author
+        }
+      });
+    }
+
+    createList = () => {
+      fetch("http://localhost:5000/posts")
+        .then(res => res.json())
+        .then(result => {
+          const maxId = result.length > 0 ? Math.max(...result.map(item => item.id)) : 0;
+          const newData = {
+            ...this.state.singledata,
+            id: maxId + 1
+          };
+    
+          fetch("http://localhost:5000/posts", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newData)
+          })
+            .then(() => {
+              // Update state after successful creation
+              this.setState(prevState => ({
+                singledata: { title: "", author: "" },
+                alldata: [...prevState.alldata, newData],
+                loading: false
+              }));
+            })
+            .catch(console.error);
+        })
+        .catch(console.error);
+    };           
+
     render() {
       const listTable = this.state.loading ? (
         <span>Loading Data......Please be patient.</span>
@@ -40,7 +85,10 @@ class App extends React.Component {
             <button type="button" className="btn btn-primary" onClick={this.getLists}>
               Get Lists
             </button>
-            <CreateList singledata={this.state.singledata} />
+            <CreateList 
+              singledata={this.state.singledata}
+              handleChange={this.handleChange}
+              createList={this.createList} />
           </span>
           {listTable}
         </div>
