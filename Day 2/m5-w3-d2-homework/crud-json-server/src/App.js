@@ -70,13 +70,69 @@ class App extends React.Component {
             .catch(console.error);
         })
         .catch(console.error);
-    };           
+    };   
+    
+    getList = (event, id) => {
+      this.setState(
+        {
+          singledata: {
+            title: "Loading...",
+            author: "Loading..."
+          }
+        },
+        () => {
+          fetch("http://localhost:5000/posts/" + id)
+            .then(res => res.json())
+            .then(result => {
+              this.setState({
+                singledata: {
+                  title: result.title,
+                  author: result.author ? result.author : ""
+                }
+              });
+            });
+        }
+      );
+    }
+
+    updateList = (id, updatedData) => {
+      fetch(`http://localhost:5000/posts/${id}`, {
+          method: "PUT",
+          headers: {
+              "Content-Type": "application/json"
+          },
+          body: JSON.stringify(updatedData) // Send updated data from updatedData
+      })
+      .then(res => res.json())
+      .then(result => {
+          console.log("Item updated successfully:", result);
+          this.setState({
+              singledata: {
+                  title: "",
+                  author: ""
+              }
+          });
+  
+          // Reload the lists after successful update
+          this.getLists();
+      })
+      .catch(error => {
+          console.error("Error updating item:", error);
+      });
+  }         
 
     render() {
       const listTable = this.state.loading ? (
         <span>Loading Data......Please be patient.</span>
       ) : (
-        <Lists alldata={this.state.alldata} />
+        <Lists 
+          alldata={this.state.alldata}
+          singledata={this.state.singledata}
+          getList={this.getList}
+          updateList={this.updateList}
+          handleChange={this.handleChange} 
+          reloadLists={this.getLists} // Pass the reloadLists function as a prop
+        />
       );
 
       return (

@@ -1,17 +1,9 @@
 import React from 'react';
+import UpdateList from './UpdateList';
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function Lists(props) {
-    let listrows = [];
-    props.alldata.forEach(element => {
-        listrows.push(
-            <tr key={parseInt(element.id)}>
-                <td>{parseInt(element.id)}</td>
-                <td>{element.title}</td>
-                <td>{element.author}</td>
-            </tr>
-        )
-    })
+    const { alldata, updateList, handleChange } = props;
 
     return (
         <table className='table table-striped'>
@@ -24,9 +16,24 @@ function Lists(props) {
                     <th>Delete</th>
                 </tr>
             </thead>
-            <tbody>{listrows}</tbody>
+            <tbody>
+                {alldata.map(item => (
+                    <tr key={item.id}>
+                        <td>{item.id}</td>
+                        <td>{item.title}</td>
+                        <td>{item.author}</td>
+                        <td>
+                            <UpdateList
+                                item={item} // Pass the data of the specific item being updated
+                                updateList={updateList}
+                                handleChange={handleChange}
+                            />
+                        </td>
+                    </tr>
+                ))}
+            </tbody>
         </table>
-    )
+    );
 }
 
 export default Lists;
