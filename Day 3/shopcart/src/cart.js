@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Cart = ({ products }) => {
 
@@ -21,6 +22,13 @@ const Cart = ({ products }) => {
                     ))}
                 </ul>
             </div> 
+            {/* Add Check Out button */}
+            <Link 
+                to={cartItems.length > 0 ? "/checkout" : "/"} 
+                className={`btn ${cartItems.length > 0 ? "btn-primary" : "btn-disabled"}`}
+            >
+                Check Out
+            </Link>
         </div>
     );
 };
