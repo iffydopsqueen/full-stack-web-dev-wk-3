@@ -154,3 +154,7 @@
 /* .btn .btn-primary {
     margin-left: 60px;
 } */
+
+.card-text form {
+    width: 250px;
+}

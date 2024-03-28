@@ -6,6 +6,7 @@ import Navbar from "./navbar";
 import DisplayProducts from "./displayProducts";
 import productsData from "./products";
 import Cart from "./cart";
+import Checkout from "./checkout";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 class App extends Component {
@@ -74,6 +75,10 @@ class App extends Component {
               />
             } 
             />
+            {/* Add route for Checkout component */}
+            <Route path="/checkout" element={
+              <Checkout />
+            } />
           </Routes>
         </div>
       </Router>
