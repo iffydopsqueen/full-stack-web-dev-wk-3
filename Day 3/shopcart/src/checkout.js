@@ -24,7 +24,7 @@ function Checkout() {
     <div className="container">
       <Card style={{ width: "800px" }} className="mx-auto mt-5">
         <Card.Header className="pb-4">
-          <h1>Sign In</h1>
+        <h1>{login ? 'Check Out' : 'Sign In'}</h1> {/* Change heading based on login */}
         </Card.Header>
         <Card.Body>
           <Card.Text>
