@@ -10,6 +10,7 @@ const Cart = ({ products }) => {
         <div>
             {cartItems.length === 0 ? (
                 <React.Fragment>
+                    <h3 className="cart-heading">Your Cart Items</h3> {/* Display heading even when cart is empty */}
                     <p className="cart-text">There are {cartItems.length} items in your cart.</p>
                     <Link to="/" className="btn btn-success">Continue Shopping</Link>
                 </React.Fragment>

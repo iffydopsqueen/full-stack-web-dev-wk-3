@@ -158,3 +158,11 @@
 .App .card-text form {
     width: 250px;
 }
+
+.App .align-left {
+    text-align: left;
+}
+
+.cart-text, .btn {
+    margin-left: 60px;
+}

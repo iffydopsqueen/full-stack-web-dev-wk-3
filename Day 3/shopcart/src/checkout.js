@@ -27,7 +27,7 @@ function Checkout() {
         <h1>{login ? 'Check Out' : 'Sign In'}</h1> {/* Change heading based on login */}
         </Card.Header>
         <Card.Body>
-          <Card.Text>
+          <Card.Text className="align-left"> {/* Added class to align content */}
             {!login && 
             <React.Fragment>
               <h3>Please login using one of the following:</h3>
