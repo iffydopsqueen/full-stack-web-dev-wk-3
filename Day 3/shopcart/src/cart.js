@@ -8,27 +8,36 @@ const Cart = ({ products }) => {
 
     return (
         <div>
-           <h3 className="cart-heading">Your Cart Items</h3>
-            <div className="cart">
-                <ul>
-                    {cartItems.map((product) => (
-                        <li key={product.id} className="cart-item">
-                            <img src={product.image} alt={product.desc} className="cart-item-image" />
-                            <div className="cart-item-description">
-                                {product.desc}
-                            </div>
-                            <span className="cart-item-quantity">Quantity: {product.value}</span>
-                        </li>
-                    ))}
-                </ul>
-            </div> 
-            {/* Add Check Out button */}
-            <Link 
-                to={cartItems.length > 0 ? "/checkout" : "/"} 
-                className={`btn ${cartItems.length > 0 ? "btn-primary" : "btn-disabled"}`}
-            >
-                Check Out
-            </Link>
+            {cartItems.length === 0 ? (
+                <React.Fragment>
+                    <p className="cart-text">There are {cartItems.length} items in your cart.</p>
+                    <Link to="/" className="btn btn-success">Continue Shopping</Link>
+                </React.Fragment>
+            ) : (
+                <React.Fragment>
+                    <h3 className="cart-heading">Your Cart Items</h3>
+                    <div className="cart">
+                        <ul>
+                            {cartItems.map((product) => (
+                                <li key={product.id} className="cart-item">
+                                    <img src={product.image} alt={product.desc} className="cart-item-image" />
+                                    <div className="cart-item-description">
+                                        {product.desc}
+                                    </div>
+                                    <span className="cart-item-quantity">Quantity: {product.value}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                    {/* Add Check Out button */}
+                    <Link
+                        to="/checkout"
+                        className="btn btn-primary"
+                    >
+                        Check Out
+                    </Link>
+                </React.Fragment>
+            )}
         </div>
     );
 };
