@@ -38,7 +38,7 @@ function Checkout() {
                 appId="7558807887518299"
                 autoLoad={false}
                 fields="name,email,picture"
-                scope="public_profile,user_friends"
+                scope="public_profile"
                 callback={responseFacebook}
                 icon="fa-facebook"
               />

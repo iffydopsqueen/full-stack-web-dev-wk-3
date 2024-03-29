@@ -1,4 +1,4 @@
-.App-header {
+.App .App-header {
     background-color: #00b4d8;
     color: #fff;
     padding: 20px;
@@ -7,16 +7,16 @@
     align-items: center;
 }
 
-.text-heading {
+.App .text-heading {
     margin-left: 15px;
     margin-right: 8px;
 }
   
-.cart-icon {
+.App .cart-icon {
     font-size: 15px;
 }
   
-.product-item {
+.App .product-item {
     border-bottom: 1px solid #ccc;
     display: flex;
     flex-direction: column;
@@ -24,28 +24,28 @@
     padding: 10px;
 }
   
-.product-description {
+.App .product-description {
     font-weight: bold;
     font-size: 16px;
     margin-bottom: 10px;
 }
   
-.product-content {
+.App .product-content {
     display: flex;
     align-items: center;
 }
   
-.product-content img {
+.App .product-content img {
     width: 100px;
     margin-right: 20px;
 }
 
-.product-description, 
+.App .product-description, 
 .product-content {
     margin-left: 40px;
 }
 
-.product-value input {
+.App .product-value input {
     border: 2px solid #ccc;
     text-align: center;
     font-size: 11px;
@@ -55,13 +55,13 @@
     margin-left: 20px;
 }
   
-.product-value {
+.App .product-value {
     display: flex;
     align-items: center;
     position: relative;
 }
   
-.product-value span {
+.App .product-value span {
     margin-left: 5px;
     font-size: 10px;
     position: absolute;
@@ -70,12 +70,12 @@
 
 }
 
-.cart-heading {
+.App .cart-heading {
     margin-top: 50px;
     margin-left: 60px;
 }
 
-.cart-item {
+.App .cart-item {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -85,7 +85,7 @@
     position: relative;
 }
 
-.cart-item-image {
+.App .cart-item-image {
     width: 90px;
     margin-right: 20px;
     margin-left: 10px;
@@ -93,13 +93,13 @@
     margin-bottom: 5px;
 }
 
-.cart-item-description {
+.App .cart-item-description {
     font-size: 11px;
     margin-left: 20px;
     margin-bottom: 10px;
 }
 
-.cart-item-quantity {
+.App .cart-item-quantity {
     font-size: 10px;
     font-weight: bold;
     position: absolute;
@@ -109,7 +109,7 @@
 }
 
 /* Styling the 'Add' & 'Subtract' button */
-.product-value button {
+.App .product-value button {
     background-color: #606060;
     color: #fff;
     border: none;
@@ -124,13 +124,13 @@
 }
 
 /* Styling the 'R' in React on the nav bar */
-.logo-container {
+.App .logo-container {
     display: flex;
     align-items: center;
 }
 
 /* Add styles for the circle */
-.circle {
+.App .circle {
     width: 40px; /* Adjust circle size as needed */
     height: 40px; /* Adjust circle size as needed */
     background-color: white;
@@ -140,13 +140,13 @@
     align-items: center;
 }
 
-.just-R {
+.App .just-R {
     color: #00b4d8; /* Blue color for the "R" */
     font-weight: bolder;
     margin-top: 5px;
 }
 
-.left-nav {
+.App .left-nav {
     display: flex;
 }
 
@@ -155,6 +155,6 @@
     margin-left: 60px;
 } */
 
-.card-text form {
+.App .card-text form {
     width: 250px;
 }
